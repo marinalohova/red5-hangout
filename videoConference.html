@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title>Red5 Demo - Video Conference</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<script type="text/javascript" src="swfobject.js"></script>
+        <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+        <link href="style.css" rel="stylesheet">
+		<script type="text/javascript">
+            function spotlight(streamName) {
+                swfobject.embedSWF("simpleSubscriber.swf",
+                        "spotlight", "600", "400", "7.0.0", "assets/expressInstall.swf",
+                        {"streamName":streamName});
+            }
+            function chat(streamName) {
+                swfobject.embedSWF("chat.swf", "chat", "300px", "265px", "7.0.0", "assets/expressInstall.swf",
+                        {"streamName": streamName });
+            }
+            function trace(msg) {
+              $("#trace").val($("#trace").val() + "\n" + msg);
+            }
+
+            swfobject.embedSWF("videoConference.swf", "participants", "100%", "100%", "7.0.0", "assets/expressInstall.swf", {}, { allowScriptAccess: "always" });
+
+        </script>
+	</head>
+	<body>
+    <div id="stage">
+        <div id="spotlight">
+        </div>
+    </div>
+    <div id="participants-wrapper">
+    <div id="participants">
+        <h1>You need the Adobe Flash Player for this demo, download it by clicking the image below.</h1>
+        <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+    </div>
+    </div>
+    <div id="sidebar">
+        <div id="chat" style="display:none"></div>
+        <br/>
+        <textarea id="trace"></textarea>
+    </div>
+	</body>
+</html>
